@@ -1,26 +1,26 @@
-import { React, useState } from "react";
-import { useParams } from "react-router-dom"
-// import duke from "./public/duke.jpg"
-// import perry from "./public/perry.jpg"
-// import whiskey from "./public/whiskey.jpg"
+import { React } from "react";
+import { useParams, Redirect } from "react-router-dom";
+import "./DogDetails.css"
 
+//TODO: DOCSTRINGS
 function DogDetails({ dogs }) {
-    
-    const params = useParams();
-    const dog = dogs.filter(dog => dog.name === params.name);
-    console.log("from details", dog)
-    const { name, age, src, facts } = dog[0]
-    //return dog names and pictures
-    console.log("from details, pic", src)
 
+    const { name } = useParams();
+    const dog = dogs.find(dog => dog.name === name.toLowerCase());
+
+    if (!dog) {
+        return <Redirect to="/dogs" />
+    }
+
+    const { name: dogName, age, src, facts } = dog;
 
     return (
-        <div>
-            <img src={`../public/${src}.jpg`} alt={`picture of ${name}`}></img>
-            <h1>{name}</h1>
+        <div className="DogDetails">
+            <img src={`/${src}.jpg`} alt={`pic of ${dogName}`}></img>
+            <h1>{dogName}</h1>
             <b> Age: {age}</b>
             <ul>
-                {facts.map((fact, idx)=> <li key={idx}>{fact}</li>)}
+                {facts.map((fact, idx) => <li key={idx}>{fact}</li>)}
             </ul>
         </div>
     )

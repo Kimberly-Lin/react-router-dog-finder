@@ -3,36 +3,40 @@ import axios from "axios";
 import Nav from "./Nav";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
-//import getDogs from "./getDogs";
 import Loading from "./Loading";
+import "./App.css"
 
+
+const DOGS_URL = "http://localhost:5000/dogs";
+
+//TODO: docstrings!!!!!!!
 function App() {
   const [shouldLoad, setShouldLoad] = useState(true);
   const [dogs, setDogs] = useState([]);
-  console.log("app",{ shouldLoad, dogs})
-  if (shouldLoad) {
-    setShouldLoad(false)
-    getDogs();
-  } 
 
-  async function getDogs(url = "http://localhost:5000/dogs") {
+  console.log("App", { shouldLoad, dogs })
+
+  async function getDogs(url = DOGS_URL) {
     const result = await axios.get(url);
-    // setHasDogs(true);
     setDogs(result.data);
-    //console.log("dogs getDogss", result.data);
   }
 
+  if (shouldLoad) {
+    setShouldLoad(false);
+    getDogs();
+  }
 
-//console.log("dogs in app", dogs);
+  if (dogs.length === 0) {
+    return <Loading />
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
-        {dogs.length > 0
-          ? <div> <Nav dogs={dogs} /> <Routes dogs={dogs} /> </div>
-          : <Loading />
-        }
-      </BrowserRouter>
-    </div>
+        <Nav dogs={dogs} />
+        <Routes dogs={dogs} />
+      </BrowserRouter >
+    </div >
   );
 }
 

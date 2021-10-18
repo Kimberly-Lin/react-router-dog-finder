@@ -1,17 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./Nav.css"
 
-
-function Nav({dogs}) {
-    console.log("from Nav", dogs)
+//TODO: DOCSTRINGS
+function Nav({ dogs }) {
   return (
-    <nav className="NavBar">
-      <NavLink exact to="/dogs">
+    <nav className="Nav">
+      <NavLink exact to="/dogs" className="Home">
         Home
       </NavLink>
       {dogs.map(dog =>
-        <NavLink exact to={`/dogs/${dog.name}`}>
-          {dog.name}     
+        <NavLink exact to={`/dogs/${dog.name}`} key={dog.name}>
+          {dog.name}
         </NavLink>
       )}
     </nav>
