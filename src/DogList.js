@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 
 
-function DogList(dogs) {
+function DogList({dogs}) {
 
 
 
