@@ -2,17 +2,19 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 
-function NavBar() {
-    return (
-      <nav className="NavBar">
-        <NavLink exact to="/">
-          Home
+function Nav(dogs) {
+  return (
+    <nav className="NavBar">
+      <NavLink exact to="/dogs">
+        Home
+      </NavLink>
+      {dogs.map(dog =>
+        <NavLink exact to={`/dogs/${dog.name}`}>
+          {dog.name}
         </NavLink>
-        <NavLink exact to="/dogs/:name">
-          {name}
-        </NavLink>
-      </nav>
-    );
-  }
-  
-  export default NavBar;
+      )};
+    </nav>
+  );
+}
+
+export default Nav;
