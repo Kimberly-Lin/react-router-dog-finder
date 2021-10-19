@@ -3,7 +3,13 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import DogList from "./DogList";
 import DogDetails from "./DogDetails";
 
-//TODO: DOCSTRINGS
+/** Renders paths for DogList and DogDetail
+ * 
+ * props: dogs
+ * state: N/A
+ * 
+ * App-> Routes-> DogList, DogDetails
+ */
 function Routes({ dogs }) {
   return (
     <Switch>

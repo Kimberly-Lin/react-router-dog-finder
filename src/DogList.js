@@ -1,7 +1,13 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
 
-//TODO: DOCSTRINGS
+/** Renders list of dogs
+ * 
+ * props: dogs
+ * state: N/A
+ * 
+ * App-> Routes-> DogList
+ */
 function DogList({ dogs }) {
 
   return (

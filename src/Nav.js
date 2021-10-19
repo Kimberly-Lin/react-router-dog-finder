@@ -2,7 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css"
 
-//TODO: DOCSTRINGS
+/** Renders navbar for navigating
+ * 
+ * props: dogs
+ * state: N/A
+ * 
+ * App-> Nav
+ */
 function Nav({ dogs }) {
   return (
     <nav className="Nav">

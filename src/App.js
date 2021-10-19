@@ -9,7 +9,13 @@ import "./App.css"
 
 const DOGS_URL = "http://localhost:5000/dogs";
 
-//TODO: docstrings!!!!!!!
+/** Renders list of dogs
+ * 
+ * props: None
+ * state: shouldLoad, dogs
+ * 
+ * index -> App
+ */
 function App() {
   const [shouldLoad, setShouldLoad] = useState(true);
   const [dogs, setDogs] = useState([]);

@@ -2,11 +2,17 @@ import { React } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import "./DogDetails.css"
 
-//TODO: DOCSTRINGS
+/** Renders details of dog
+ * 
+ * props: dogs
+ * state: N/A
+ * 
+ * App-> Routes-> DogDetails
+ */
 function DogDetails({ dogs }) {
 
     const { name } = useParams();
-    const dog = dogs.find(dog => dog.name === name.toLowerCase());
+    const dog = dogs.find(dog => dog.src === name.toLowerCase());
 
     if (!dog) {
         return <Redirect to="/dogs" />
